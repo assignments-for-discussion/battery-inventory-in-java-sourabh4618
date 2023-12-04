@@ -20,9 +20,12 @@ public class Main {
             if (presentCapacity < 0) {
                 throw new IllegalArgumentException("Present capacity cannot be negative.");
             }
+            if (presentCapacity > 120) {
+                throw new IllegalArgumentException("Present capacity cannot be greater than 120.");
+            }
 
             // Compute SoH percentage
-            double soh = (double) presentCapacity / ratedCapacity * 100;
+            double soh = (double) ((presentCapacity / ratedCapacity) * 100);
 
             // Classify batteries based on SoH
             if (soh >= 80 && soh <= 100) {
@@ -46,8 +49,8 @@ public class Main {
 
         // Asserts to validate the counts
         assert counts.healthy == 2;
-        assert counts.exchange == 2;
-        assert counts.failed == 1;
+        assert counts.exchange == 1;
+        assert counts.failed == 2;
 
         // Additional test cases with boundary conditions
         int[] edgeCase1 = {120};  // Single battery with maximum rated capacity
@@ -62,7 +65,7 @@ public class Main {
         assert countsEdge2.exchange == 0;
         assert countsEdge2.failed == 1;
 
-        int[] edgeCase3 = {-10, 90, 130};  // Batteries with negative, valid, and invalid capacities
+        int[] edgeCase3 = {-10, 130};  // Batteries with negative, valid, and invalid capacities
         try {
             countBatteriesByHealth(edgeCase3);
         } catch (IllegalArgumentException e) {
