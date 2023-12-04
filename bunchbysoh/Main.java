@@ -36,9 +36,9 @@ public class Main {
     CountsBySoH counts = countBatteriesByHealth(presentCapacities);
 
     // Asserts to validate the counts
-    assert counts.healthy == 2;
-    assert counts.exchange == 1;
-    assert counts.failed == 2;
+    assert(counts.healthy == 2);
+    assert(counts.exchange == 1);
+    assert(counts.failed == 2);
 
     // Additional test cases with boundary conditions
     int[] edgeCase1 = {120};  // Single battery with maximum rated capacity
