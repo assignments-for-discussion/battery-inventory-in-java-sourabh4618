@@ -1,5 +1,7 @@
 package bunchbysoh;
 
+
+
 public class Main {
     static class CountsBySoH {
         public int healthy = 0;
@@ -67,10 +69,11 @@ public class Main {
             System.out.println("IllegalArgumentException caught: " + e.getMessage());
         }
 
-        System.out.println("Done counting :)\n");
+        System.out.println("Done counting \n");
     }
 
     public static void main(String[] args) {
         testBucketingByHealth();
-    }
+    }
 }
+
